@@ -23,6 +23,7 @@ const razorpay = new Razorpay({
 const generateReceipt = () => `rec_${shortid.generate().substring(0, 8)}`;
 
 // POST /api/create-order
+// POST /api/create-order
 app.post("/create-order", async (req, res) => {
   console.log("Request:", req.body);
 
@@ -33,7 +34,7 @@ app.post("/create-order", async (req, res) => {
     }
 
     const order = await razorpay.orders.create({
-      amount: amount * 100,
+      amount: Math.round(amount * 100), // ✅ FIX: Use Math.round to avoid floating-point errors
       currency,
       receipt: generateReceipt(),
       payment_capture: 1,
@@ -54,7 +55,6 @@ app.post("/create-order", async (req, res) => {
     });
   }
 });
-
 // Health
 app.get("/", (req, res) => {
   res.json({ status: "Razorpay API Live", endpoint: "/create-order" });
