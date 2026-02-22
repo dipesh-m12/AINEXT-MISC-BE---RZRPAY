@@ -11,8 +11,8 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 // Razorpay
-const RAZORPAY_KEY_ID = "rzp_test_RbihyfCiwLJ5Q3";
-const RAZORPAY_KEY_SECRET = "Vt3mR827KwL3wf38ycLRWwK6";
+const RAZORPAY_KEY_ID = "rzp_test_SIxbPthzH051l2";
+const RAZORPAY_KEY_SECRET = "hjFgoIRlg7zHmf9G8rnBlJid";
 
 const razorpay = new Razorpay({
   key_id: RAZORPAY_KEY_ID,
